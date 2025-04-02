@@ -1,6 +1,6 @@
 # iSIM-sigma
 
-![iSIM-sigma Logo](./figures/iSIM-sigma.png)
+![iSIM-sigma Logo](./figures/isim-sigma.png)
 
 Authors: 
         Kenneth Lopez Perez klopezperez@ufl.edu
