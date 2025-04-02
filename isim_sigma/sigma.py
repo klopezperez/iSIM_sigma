@@ -1,8 +1,8 @@
 import numpy as np
 import pandas as pd
 from joblib import Parallel, delayed, parallel_backend
-from isim_sampling import stratified_sampling
-from isim_utils import pairwise_average
+from isim_sigma.sampling import stratified_sampling
+from isim_sigma.utils import pairwise_average
 
 def get_stdev_russell_fast(arr):
     sums = np.sum(arr, axis=0)

@@ -1,4 +1,4 @@
-from isim_comp import calculate_isim
+from isim_sigma.isim import calculate_isim
 import numpy as np
 import pandas as pd
 from rdkit import Chem, DataStructs

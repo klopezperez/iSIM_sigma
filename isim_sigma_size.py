@@ -1,6 +1,6 @@
-from isim_utils import pairwise_average, npy_to_rdkit, rdkit_pairwise_sim
+from isim_sigma.utils import pairwise_average, npy_to_rdkit, rdkit_pairwise_sim
 import numpy as np
-from isim_sigma import get_stdev_tanimoto_fast, get_stdev_russell_fast, get_stdev_sokal_fast, random_sigma, stratified_sigma
+from isim_sigma.sigma import get_stdev_tanimoto_fast, get_stdev_russell_fast, get_stdev_sokal_fast, random_sigma, stratified_sigma
 import pandas as pd
 import time
 
