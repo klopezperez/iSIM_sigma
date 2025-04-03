@@ -43,12 +43,12 @@ dataframe = pd.DataFrame(
     index=np.arange(10, len(fps_rdkit), 10)
 )
 
-dataframe.to_csv("random_sigma_errors.csv", index_label="n")
+dataframe.to_csv("isim_sigma_results/random_sigma_errors.csv", index_label="n")
 
 better_errors = []
 for row in dataframe.iterrows():
     better_errors.append(row['Trial_0'] < sigma_error and row['Trial_1'] < sigma_error and row['Trial_2'] < sigma_error)
 
 dataframe['Better'] = better_errors
-dataframe.to_csv("random_sigma_errors.csv", index_label="n")
+dataframe.to_csv("isim_sigma_results/random_sigma_errors.csv", index_label="n")
     
