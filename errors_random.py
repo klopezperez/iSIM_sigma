@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 
 # Load the complete chembl_33 natural product dataset
-fps = np.load("chembl_33_fps.npy", mmap_mode="r")
+fps = np.load("chembl_33_np.npy", mmap_mode="r")
 fps_rdkit = npy_to_rdkit(fps)
 
 # Calculate the iSIM-sigma to monitor the error
@@ -19,7 +19,7 @@ print(sigma_error)
 # Define random sigma
 def random_sigma(fps_rdkit, n):
     indexes_rand = np.random.choice(len(fps_rdkit), n, replace = False)
-    fps_rand = fps_rdkit[indexes_rand]
+    fps_rand = [fps_rdkit[i] for i in indexes_rand]
 
     average, std = rdkit_pairwise_sim(fps_rand)
 
