@@ -12,9 +12,12 @@ times = {}
 for i in range(n_trials):
     trial_time = []
     for n in range(100, len(fps), 100):
+        sigma = calculate_comp_sim(fps[:n], n_ary="JT")
+
         start = time()
-        sigma = calculate_comp_sim(fps, n_ary="JT")
+        sigma_sorted = np.argsort(sigma)
         trial_time.append(time() - start)
+
     times[f'Trial_{i}'] = trial_time
 
 
@@ -24,4 +27,4 @@ dataframe = pd.DataFrame(
     index=np.arange(100, len(fps), 100)
 )
 
-dataframe.to_csv("isim_sigma_results/comp_sim_times.csv", index_label="n")
+dataframe.to_csv("isim_sigma_results/arg_sort_times.csv", index_label="n")
