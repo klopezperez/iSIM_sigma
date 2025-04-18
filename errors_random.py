@@ -9,12 +9,14 @@ fps_rdkit = npy_to_rdkit(fps)
 
 # Calculate the iSIM-sigma to monitor the error
 strat_sigma = stratified_sigma(fps, n=50, n_ary='JT')
+print(f"strat_sigma:{strat_sigma}")
 
 # Calculate the true sigma
 true_sigma = rdkit_pairwise_sim(fps_rdkit)[1]
+print(f"true_sigma:{true_sigma}")
 
 sigma_error = np.abs(strat_sigma - true_sigma)
-print(sigma_error)
+print(f"abs_error:{sigma_error}")
 
 # Define random sigma
 def random_sigma(fps_rdkit, n):
@@ -31,7 +33,7 @@ n_trials = 3
 data = {}
 for i in range(n_trials):
     errors = []
-    for n in range(10, len(fps_rdkit), 10):
+    for n in range(100, len(fps_rdkit), 100):
         sigma = random_sigma(fps_rdkit, n)
         errors.append(np.abs(sigma - true_sigma))
 
@@ -40,15 +42,8 @@ for i in range(n_trials):
 # Save the data
 dataframe = pd.DataFrame(
     data,
-    index=np.arange(10, len(fps_rdkit), 10)
+    index=np.arange(100, len(fps_rdkit), 100)
 )
 
-dataframe.to_csv("isim_sigma_results/random_sigma_errors.csv", index_label="n")
+dataframe.to_csv("isim_sigma_results/random_sigma_errors_.csv", index_label="n")
 
-better_errors = []
-for row in dataframe.iterrows():
-    better_errors.append(row['Trial_0'] < sigma_error and row['Trial_1'] < sigma_error and row['Trial_2'] < sigma_error)
-
-dataframe['Better'] = better_errors
-dataframe.to_csv("isim_sigma_results/random_sigma_errors.csv", index_label="n")
-    
